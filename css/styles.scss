@@ -76,6 +76,28 @@ body{
     z-index: 1;
 }
 
+#loginButton:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal-content{
+    border: 0px;
+
+    .modal-body{
+        background-color: $background-light;
+    }
+
+    .modal-header{
+        background-color: $background-dark;
+        color: floralwhite;
+        border: 0px;
+
+        .close{
+            color: floralwhite;
+        }
+    }
+}
 
 
 

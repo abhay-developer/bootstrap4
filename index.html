@@ -36,7 +36,7 @@
                 </ul>
 
                 <span class="navbar-text">
-                    <a href="" data-toggle="modal" data-target="#loginModal">
+                    <a id="loginButton">
                         <span class="fa fa-sign-in fa-lg"></span> Login
                     </a>
                 </span>
@@ -49,7 +49,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="loginModalCloseBtn">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-row">
                             <button type="button" class="btn btn-secondary btn-sm ml-auto"
-                                data-dismiss="modal">Cancel</button>
+                                id="loginModalCancelBtn">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
                         </div>
                     </form>
@@ -95,7 +95,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm align-self-center">
-                    <a class="btn btn-warning btn-block text-black" href="" data-toggle="modal" data-target="#reservationModal">Reserve a Table</a>
+                    <button class="btn btn-warning btn-block text-black" id="reserveBtn">Reserve a Table</button>
                 </div>
             </div>
         </div>
@@ -222,7 +222,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Reserve a Table</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="reservationModalCloseBtn">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -230,28 +230,33 @@
                             <label class="col-12 col-sm-2">Number of Guests</label>
                             <div class="col">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="one_guest_radio" value="one">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="one_guest_radio" value="1">
                                     <label class="form-check-label" for="one_guest_radio">1</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="two_guest_radio" value="two">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="two_guest_radio" value="2">
                                     <label class="form-check-label" for="two_guest_radio">2</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="three_guest_radio" value="three">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="three_guest_radio" value="3">
                                     <label class="form-check-label" for="three_guest_radio">3</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="four_guest_radio" value="four">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="four_guest_radio" value="4">
                                     <label class="form-check-label" for="four_guest_radio">4</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="six_guest_radio" value="six">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="five_guest_radio" value="5">
+                                    <label class="form-check-label" for="five_guest_radio">5</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="no_of_guests"
+                                        id="six_guest_radio" value="6">
                                     <label class="form-check-label" for="six_guest_radio">6</label>
                                 </div>
                             </div>
@@ -260,10 +265,10 @@
                             <label class="col-12 col-sm-2">Section</label>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-success active">
-                                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Non-Smoking
+                                  <input type="radio" name="section" value="Non-Smoking" id="option1" autocomplete="off" checked> Non-Smoking
                                 </label>
                                 <label class="btn btn-danger">
-                                  <input type="radio" name="options" id="option2" autocomplete="off"> Smoking
+                                  <input type="radio" name="section" value="Smoking" id="option2" autocomplete="off"> Smoking
                                 </label>
                             </div>
                         </div>
@@ -278,7 +283,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col offset-0 offset-sm-2">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-secondary" id="reservationModalCancelBtn">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Reserve</button>
                             </div>
                         </div>
@@ -353,6 +358,30 @@
                     $('#carouselButton').children('span').removeClass('fa-play');
                     $('#carouselButton').children('span').addClass('fa-pause');
                 }
+            });
+
+            $('#loginButton').click(function(){
+                $('#loginModal').modal('show');
+            });
+
+            $('#loginModalCloseBtn').click(function(){
+                $('#loginModal').modal('hide');
+            });
+
+            $('#loginModalCancelBtn').click(function(){
+                $('#loginModal').modal('hide');
+            });
+
+            $('#reserveBtn').click(function(){
+                $('#reservationModal').modal('show');
+            });
+
+            $('#reservationModalCloseBtn').click(function(){
+                $('#reservationModal').modal('hide');
+            });
+
+            $('#reservationModalCancelBtn').click(function(){
+                $('#reservationModal').modal('hide');
             });
 
         });
